@@ -1,0 +1,25 @@
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.button {
+  height: 5%;
+  width: 10%;
+  float: left;
+  border: 1px solid green;
+  transition: transform, background, .5s ease;
+  transform: scale(1);
+}
+button:hover {
+  background: #ff5339;
+  box-shadow: 0 0 6px white;
+  transform: scale(1.05);
+}
+button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+button {
+  margin: 5rem;
+}
