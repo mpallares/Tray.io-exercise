@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import {useAppDispatch, useAppSelector} from '../../redux/hooks'
+
+
 import passwordValidator from 'password-validator';
 const schema = new passwordValidator();
 
@@ -25,6 +28,12 @@ interface User {
 }
 
 export const Users: React.FC<{}> = (): JSX.Element => {
+  const userStore = useAppSelector(state => state.user)
+  console.log('user from redux', userStore)
+
+  const dispatch = useAppDispatch()
+ 
+ 
   const initialUser = {
     name: '',
     role: '',
