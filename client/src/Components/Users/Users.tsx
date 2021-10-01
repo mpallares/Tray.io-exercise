@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
+import passwordValidator from 'password-validator';
+const schema = new passwordValidator();
 
+schema
+  .is()
+  .min(10)
+  .has()
+  .uppercase(1)
+  .has()
+  .lowercase(1)
+  .has()
+  .digits(1)
+  .has()
+  .not()
+  .spaces();
 
 interface User {
   person: {
@@ -11,13 +25,12 @@ interface User {
 }
 
 export const Users: React.FC<{}> = (): JSX.Element => {
-
   const initialUser = {
     name: '',
     role: '',
     email: '',
-    password: ''
-  }
+    password: '',
+  };
   const [user, setUser] = useState(initialUser);
 
   const submitHandler = (e: React.FormEvent) => {
@@ -26,6 +39,17 @@ export const Users: React.FC<{}> = (): JSX.Element => {
   };
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === 'password') {
+      const validate = schema.validate(e.target.value);
+      if (validate) {
+        setUser((previousState) => ({
+          ...previousState,
+          [e.target.name]: e.target.value,
+        }));
+      } else {
+        console.log('invalid');
+      }
+    }
     setUser((previousState) => ({
       ...previousState,
       [e.target.name]: e.target.value,
@@ -40,6 +64,7 @@ export const Users: React.FC<{}> = (): JSX.Element => {
           <input
             type="text"
             name="name"
+            required
             value={user.name}
             onChange={changeHandler}
           />
@@ -56,8 +81,9 @@ export const Users: React.FC<{}> = (): JSX.Element => {
         <div>
           <label htmlFor="email">email</label>
           <input
-            type="text"
+            type="email"
             name="email"
+            required
             value={user.email}
             onChange={changeHandler}
           />
@@ -65,8 +91,9 @@ export const Users: React.FC<{}> = (): JSX.Element => {
         <div>
           <label htmlFor="password">password</label>
           <input
-            type="text"
+            type="password"
             name="password"
+            required
             value={user.password}
             onChange={changeHandler}
           />
