@@ -9,11 +9,20 @@ import { Navigation } from './Components/Navigation/Navigation';
 export interface IState {
   page: 'users' | 'privacy' | 'done'; //will look at enum type to use here
 }
+
+interface User {
+  person: {
+    name: string;
+    role: string;
+    email: string;
+    password: string;
+  };
+}
 const App = () => {
   const [page, setPage] = useState<IState['page']>('users');
 
   const renderPage = (): JSX.Element => {
-    if (page === 'users') return <Users />;
+    if (page === 'users') return <Users person={} />;
     else if (page === 'privacy') return <Privacy />;
     else return <Done />;
   };
