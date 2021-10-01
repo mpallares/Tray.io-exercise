@@ -22,7 +22,7 @@ const App = () => {
   const [page, setPage] = useState<IState['page']>('users');
 
   const renderPage = (): JSX.Element => {
-    if (page === 'users') return <Users person={} />;
+    if (page === 'users') return <Users  />;
     else if (page === 'privacy') return <Privacy />;
     else return <Done />;
   };
