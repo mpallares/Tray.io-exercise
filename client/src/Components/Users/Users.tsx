@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import {useAppDispatch, useAppSelector} from '../../redux/hooks'
-
+import React, { useState, useEffect, useRef } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { ActionType } from '../../redux/actions/actionTypes';
 
 import passwordValidator from 'password-validator';
 const schema = new passwordValidator();
@@ -28,12 +28,11 @@ interface User {
 }
 
 export const Users: React.FC<{}> = (): JSX.Element => {
-  const userStore = useAppSelector(state => state.user)
-  console.log('user from redux', userStore)
+  const userStore = useAppSelector((state) => state.user);
+  console.log('user from redux', userStore);
 
-  const dispatch = useAppDispatch()
- 
- 
+  const dispatch = useAppDispatch();
+
   const initialUser = {
     name: '',
     role: '',
@@ -44,6 +43,7 @@ export const Users: React.FC<{}> = (): JSX.Element => {
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    dispatch({ type: ActionType.CREATE__USER, payload: user });
     setUser(initialUser);
   };
 
@@ -66,7 +66,7 @@ export const Users: React.FC<{}> = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="name">name</label>
@@ -109,6 +109,6 @@ export const Users: React.FC<{}> = (): JSX.Element => {
         </div>
         <button>Submit</button>
       </form>
-    </div>
+    </React.Fragment>
   );
 };
