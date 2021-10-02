@@ -26,10 +26,10 @@ export const Users: React.FC<{}> = (): JSX.Element => {
   const userStore = useAppSelector((state) => state.user);
 
   const submit = () => {
-    dispatch({ type: ActionType.CREATE__USER, payload:  values})
+    dispatch({ type: ActionType.CREATE__USER, payload:  user})
   }
   
-  const {handleChange, handleSubmit, values} = useForm(submit)
+  const {changeHandler, submitHandler, user} = useForm(submit)
   console.log('user from redux', userStore);
 
 
@@ -53,15 +53,15 @@ export const Users: React.FC<{}> = (): JSX.Element => {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitHandler}>
         <div>
           <label htmlFor="name">name</label>
           <input
             type="text"
             name="name"
             required
-            value={values.name}
-            onChange={handleChange}
+            value={user.name}
+            onChange={changeHandler}
           />
         </div>
         <div>
@@ -69,8 +69,8 @@ export const Users: React.FC<{}> = (): JSX.Element => {
           <input
             type="text"
             name="role"
-            value={values.role}
-            onChange={handleChange}
+            value={user.role}
+            onChange={changeHandler}
           />
         </div>
         <div>
@@ -79,8 +79,8 @@ export const Users: React.FC<{}> = (): JSX.Element => {
             type="email"
             name="email"
             required
-            value={values.email}
-            onChange={handleChange}
+            value={user.email}
+            onChange={changeHandler}
           />
         </div>
         <div>
@@ -89,8 +89,8 @@ export const Users: React.FC<{}> = (): JSX.Element => {
             type="password"
             name="password"
             required
-            value={values.password}
-            onChange={handleChange}
+            value={user.password}
+            onChange={changeHandler}
           />
         </div>
         <button>Submit</button>
