@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ActionType } from '../../redux/actions/actionTypes';
 import useForm from '../../hooks/useForm'
 import { Callback } from '../../types';
+import validate from '../../helpers/validate';
 
 import passwordValidator from 'password-validator';
 const schema = new passwordValidator();
@@ -27,9 +28,10 @@ export const Users: React.FC<{}> = (): JSX.Element => {
 
   const submit = () => {
     dispatch({ type: ActionType.CREATE__USER, payload:  user})
+
   }
   
-  const {changeHandler, submitHandler, user} = useForm(submit)
+  const {changeHandler, submitHandler, user, errors} = useForm(submit, validate)
   console.log('user from redux', userStore);
 
 
@@ -82,6 +84,7 @@ export const Users: React.FC<{}> = (): JSX.Element => {
             value={user.email}
             onChange={changeHandler}
           />
+          {errors.email && <p>{errors.email}</p>}
         </div>
         <div>
           <label htmlFor="password">password</label>
@@ -92,6 +95,7 @@ export const Users: React.FC<{}> = (): JSX.Element => {
             value={user.password}
             onChange={changeHandler}
           />
+          {errors.password && <p>{errors.password}</p>}
         </div>
         <button>Submit</button>
       </form>

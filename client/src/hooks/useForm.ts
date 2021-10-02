@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import validate from '../helpers/validate';
 
 type Callback = {
-    onSubmit:() => void
-}
-const useForm = (submit: Callback['onSubmit']) => {
+  onSubmit: () => void;
+  // validateUser: ({ name:string ,
+  // role: string,
+  // email: string,
+  // password: string}) => {}
+};
+const useForm = (submit: Callback['onSubmit'], validate: any) => {
   const [user, setUsers] = useState({
+    name: '',
+    role: '',
+    email: '',
+    password: '',
+  });
+
+  const [errors, setErrors] = useState({
     name: '',
     role: '',
     email: '',
@@ -16,16 +28,27 @@ const useForm = (submit: Callback['onSubmit']) => {
     setUsers({ ...user, [name]: value });
   };
 
-  const submitHandler= (event: React.FormEvent) => {
-    event.preventDefault()
-    submit()
-  }
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    setErrors(validate(user));
+  };
+  
+  useEffect(() => {
+    if (Object.keys(errors).length === 0) submit();
+    setUsers({
+      name: '',
+      role: '',
+      email: '',
+      password: '',
+    });
+  }, [errors]);
 
   return {
-      changeHandler,
-      submitHandler,
-      user
-  }
+    changeHandler,
+    submitHandler,
+    user,
+    errors,
+  };
 };
 
-export default useForm
+export default useForm;
