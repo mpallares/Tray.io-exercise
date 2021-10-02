@@ -5,3 +5,6 @@ export interface User {
   email: String
 }
 
+export interface Callback  {
+  onSubmit: () => void
+}
