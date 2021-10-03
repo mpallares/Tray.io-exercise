@@ -1,5 +1,78 @@
 .required:after {
-  content:"*";
+  content: '*';
   color: red;
 }
+
+.main-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  font-size: large;
+}
+
+input {
+  margin-top: 0.2rem;
+  height: 2rem;
+  border-color: #5a5a5a;
+}
+
+input[value] {
+  color:#3f3f3f;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input:focus {
+  outline-color: #4eb5f1;
+}
+
+
+
+.name-field {
+  width: 45vw;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+  justify-content: center;
+  position: relative;
+}
+
+.submit-button {
+  align-self: right;
+  align-self: flex-end;
+  color: #ffffff;
+  background-color:#029403;
+  height: 2rem;
+  width: 7rem;
+  box-shadow: 10px 5px 5px rgb(197, 194, 194);
+  border: 1px solid grey;
+  text-align: center;
+  transition: transform, background, 0.5s ease;
+  transform: scale(1);
+}
+
+.submit-button:hover {
+  background: rgb(151, 151, 228);
+  box-shadow: 0 0 6px white;
+  transform: scale(1.05);
+  box-shadow: 10px 5px 5px rgb(197, 194, 194);
+}
+.email-error {
+  /* background-color: black; */
+  position: absolute;
+  /* padding-bottom: 0; */
+  color: red;
+  font-size: x-small;
+  bottom: -15px;
+}
+
+.password-error {
+  position: absolute;
+  color: red;
+  font-size: x-small;
+  bottom: -15px;
+}
+
 

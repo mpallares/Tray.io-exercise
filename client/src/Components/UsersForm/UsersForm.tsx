@@ -1,38 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ActionType } from '../../redux/actions/actionTypes';
-import useForm from '../../hooks/useForm'
+import useForm from '../../hooks/useForm';
 import { Callback } from '../../types';
 import validate from '../../helpers/validate';
-import './UsersForm.css'
-
+import './UsersForm.css';
 
 
 export const UsersForm: React.FC<{}> = (): JSX.Element => {
-
   const dispatch = useAppDispatch();
   const userStore = useAppSelector((state) => state.user);
 
-  
   const submit = () => {
-    dispatch({ type: ActionType.CREATE__USER, payload: user})
+    dispatch({ type: ActionType.CREATE__USER, payload: user });
     setUsers({
       name: '',
       role: '',
       email: '',
       password: '',
     });
-
-  }
-  const {changeHandler, submitHandler, user, errors, setUsers} = useForm(submit, validate)
+  };
+  const { changeHandler, submitHandler, user, errors, setUsers } = useForm(
+    submit,
+    validate
+  );
   console.log('user from redux', userStore);
 
-
   return (
-    <React.Fragment>
+    <div className="main-container">
       <form className="form-container" onSubmit={submitHandler}>
-        <div>
-          <label className="required label-title" htmlFor="name">name: </label>
+        <div className="name-field">
+          <label className="required label-title" htmlFor="name">
+            name:{' '}
+          </label>
           <input
             type="text"
             name="name"
@@ -41,8 +41,10 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
             onChange={changeHandler}
           />
         </div>
-        <div>
-          <label className="label-title" htmlFor="role">role: </label>
+        <div className="name-field">
+          <label className="label-title" htmlFor="role">
+            role:{' '}
+          </label>
           <input
             type="text"
             name="role"
@@ -50,8 +52,10 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
             onChange={changeHandler}
           />
         </div>
-        <div>
-          <label className="required label-title" htmlFor="email">email: </label>
+        <div className="name-field">
+          <label className="required label-title" htmlFor="email">
+            email:{' '}
+          </label>
           <input
             type="text"
             name="email"
@@ -59,21 +63,26 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
             value={user.email}
             onChange={changeHandler}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p className="email-error">{errors.email}</p>}
         </div>
-        <div>
-          <label className="required label-title" htmlFor="password">password: </label>
+        <div className="name-field">
+          <label className="required label-title" htmlFor="password">
+            password:{' '}
+          </label>
           <input
+          className="asterisk"
             type="password"
             name="password"
             required
             value={user.password}
             onChange={changeHandler}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && <p className="password-error">{errors.password}</p>}
         </div>
-        <button>Submit</button>
+        <div className="name-field">
+          <button className="submit-button">Submit</button>
+        </div>
       </form>
-    </React.Fragment>
+    </div>
   );
 };
