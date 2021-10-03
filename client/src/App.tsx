@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Users} from './Components/Users/Users';
+import {UsersForm} from './Components/UsersForm/UsersForm';
 import {Done} from './Components/Done/Done';
 import {Privacy} from './Components/Privacy/Privacy';
 
@@ -7,22 +7,13 @@ import './App.css';
 import { Navigation } from './Components/Navigation/Navigation';
 
 export interface IState {
-  page: 'users' | 'privacy' | 'done'; //will look at enum type to use here
-}
-
-interface User {
-  person: {
-    name: string;
-    role: string;
-    email: string;
-    password: string;
-  };
+  page: 'users' | 'privacy' | 'done';
 }
 const App = () => {
   const [page, setPage] = useState<IState['page']>('users');
 
   const renderPage = (): JSX.Element => {
-    if (page === 'users') return <Users  />;
+    if (page === 'users') return <UsersForm  />;
     else if (page === 'privacy') return <Privacy />;
     else return <Done />;
   };

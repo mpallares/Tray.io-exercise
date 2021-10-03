@@ -10,7 +10,7 @@ type User = {
 };
 
 export default function validate(values: User) {
-  const validPassword = /"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$"/
+  const validPassword = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{10,})$/
   let errors: Errors = {};
 
   if (!values.email) {
@@ -24,6 +24,9 @@ export default function validate(values: User) {
   } else if (!validPassword.test(values.password)) {
     errors.password = 'Password needs to be a minimum of 10 characters, at least: 1 uppercase, 1 lowercase, 1 number';
   }
+
+  
+  console.log('ERRORS', errors)
 
   return errors;
 }

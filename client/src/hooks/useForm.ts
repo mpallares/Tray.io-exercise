@@ -3,10 +3,6 @@ import validate from '../helpers/validate';
 
 type Callback = {
   onSubmit: () => void;
-  // validateUser: ({ name:string ,
-  // role: string,
-  // email: string,
-  // password: string}) => {}
 };
 const useForm = (submit: Callback['onSubmit'], validate: any) => {
   const [user, setUsers] = useState({
@@ -31,16 +27,12 @@ const useForm = (submit: Callback['onSubmit'], validate: any) => {
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     setErrors(validate(user));
+    
   };
-  
+
   useEffect(() => {
     if (Object.keys(errors).length === 0) submit();
-    setUsers({
-      name: '',
-      role: '',
-      email: '',
-      password: '',
-    });
+   
   }, [errors]);
 
   return {
@@ -48,6 +40,7 @@ const useForm = (submit: Callback['onSubmit'], validate: any) => {
     submitHandler,
     user,
     errors,
+    setUsers
   };
 };
 
