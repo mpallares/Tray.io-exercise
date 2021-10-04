@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import validate from '../helpers/validate';
+
 
 type Callback = {
   onSubmit: () => void;
@@ -20,14 +20,19 @@ const useForm = (submit: Callback['onSubmit'], validate: any) => {
   });
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setUsers({ ...user, [name]: value });
+    // const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    // const name = event.target.name;
+    const { name, value} = event.target;
+    setUsers((prev) =>  ({...prev, [name]: value}));
+
+    
+
+    //setUsers({ ...user, name: e.target.value, role: e.target.value, email: e.target.value, password: e.target.value, firstCheckbox:e.target.checked, secondCheckbox: e.target.checked });
   };
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    setErrors(validate(user));
-    
+    setErrors(validate(user)); 
   };
 
   useEffect(() => {

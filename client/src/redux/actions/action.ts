@@ -1,4 +1,4 @@
-import {User} from '../../types'
+import {User, Checkbox} from '../../types'
 import {ActionType} from './actionTypes'
 
 interface CreateUser {
@@ -6,4 +6,12 @@ interface CreateUser {
   payload: User
 }
 
-export type Action = CreateUser
+interface CreateCheckbox {
+  type: ActionType.CREATE__CHECKBOX
+  payload: Checkbox
+}
+
+
+export type ActionUser = CreateUser
+export type ActionCheckbox = CreateCheckbox
+

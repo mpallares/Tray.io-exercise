@@ -1,17 +1,13 @@
-import { ActionUser } from '../actions/action';
+import { ActionCheckbox } from '../actions/action';
 import { ActionType } from '../actions/actionTypes';
 
-export const userReducer = (state = [], action: ActionUser) => {
+
+export const checkboxReducer = (state = [], action: ActionCheckbox) => {
   switch (action.type) {
-    case ActionType.CREATE__USER:
+    case ActionType.CREATE__CHECKBOX:
       return [...state, {...action.payload}];
    
     default:
       return state;
   }
 };
-
-
-
-
-

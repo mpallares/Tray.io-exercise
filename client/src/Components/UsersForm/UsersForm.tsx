@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ActionType } from '../../redux/actions/actionTypes';
 import useForm from '../../hooks/useForm';
-import { Callback } from '../../types';
 import validate from '../../helpers/validate';
 import './UsersForm.css';
 
@@ -10,6 +9,8 @@ import './UsersForm.css';
 export const UsersForm: React.FC<{}> = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const userStore = useAppSelector((state) => state.user);
+
+  console.log('USERSSSS', userStore)
 
   const submit = () => {
     dispatch({ type: ActionType.CREATE__USER, payload: user });
