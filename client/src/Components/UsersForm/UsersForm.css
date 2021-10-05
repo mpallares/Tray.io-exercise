@@ -5,8 +5,8 @@
 
 .form-container {
   padding-left: 10px;
-  height: 60vh;
-  width: 47vw;
+  height: 60%;
+  width: 47%;
   margin-top: 1rem;
   border: 1px solid black;
 }
@@ -16,7 +16,6 @@
   width: 100vw;
   height: 100vh;
   justify-content: center;
-  font-size: large;
 }
 
 input {

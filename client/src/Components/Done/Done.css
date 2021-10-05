@@ -1,0 +1,32 @@
+.done-main-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+.done-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-left: 10px;
+  height: 20vh;
+  width: 46vw;
+  margin-top: 1rem;
+  border: 1px solid black;
+}
+
+.check-icon {
+  font-size: 3rem;
+  color: #029403;
+  font-weight: bold;
+}
+
+.text-done {
+  color: #029403;
+  margin-top: -1px;
+  width: 70%;
+  text-align: center;
+  line-height: 28px;
+}
