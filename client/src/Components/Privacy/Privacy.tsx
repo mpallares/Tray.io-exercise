@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useAppDispatch} from '../../redux/hooks'
+import { useAppDispatch } from '../../redux/hooks';
 import { ActionType } from '../../redux/actions/actionTypes';
 import './Privacy.css';
 
@@ -8,41 +8,45 @@ export const Privacy: React.FC<{}> = (): JSX.Element => {
     firstCheckbox: false,
     secondCheckbox: false,
   });
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
- const submitHandler = (e:React.FormEvent) => {
-  e.preventDefault()
-  dispatch({type: ActionType.CREATE__CHECKBOX, payload: checked})
- }
+  const submitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch({ type: ActionType.CREATE__CHECKBOX, payload: checked });
+  };
 
   return (
     <div className="privacy-container">
-      <form className="checkbox-form-container" onSubmit={submitHandler} >
+      <form className="checkbox-form-container" onSubmit={submitHandler}>
         <div className="checkbox-container">
-          <input
-            checked={checked.firstCheckbox}
-            type="checkbox"
-            onChange={(e) =>
-              setChecked({ ...checked, firstCheckbox: e.target.checked })
-            }
-          />
-          <label>Receive updates about Tray.io product by email</label>
-        </div>
-        <div className="checkbox-container">
-          <input
-            checked={checked.secondCheckbox}
-            type="checkbox"
-            onChange={(e) =>
-              setChecked({ ...checked, secondCheckbox: e.target.checked })
-            }
-          />
-          <label>
-            Receive communication by email for other products created by the
-            Tray.io team
+          <label className="label-checkbox-container">
+            Receive updates about Tray.io product by email
+            <input
+              checked={checked.firstCheckbox}
+              type="checkbox"
+              onChange={(e) =>
+                setChecked({ ...checked, firstCheckbox: e.target.checked })
+              }
+            />
+            <span className="checkmark"></span>
           </label>
         </div>
         <div className="checkbox-container">
-          <button>Submit</button>
+          <label className="label-checkbox-container">
+            Receive communication by email for other products created by the
+            Tray.io team
+            <input
+              checked={checked.secondCheckbox}
+              type="checkbox"
+              onChange={(e) =>
+                setChecked({ ...checked, secondCheckbox: e.target.checked })
+              }
+            />
+            <span className="checkmark"></span>
+          </label>
+        </div>
+        <div className="button-checkbox-container">
+          <button className="submit-button-checkbox">Submit</button>
         </div>
       </form>
     </div>

@@ -1,0 +1,102 @@
+.privacy-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+.checkbox-form-container {
+  padding-top: 1.5rem;
+  padding-left: 10px;
+  height: 20vh;
+  width: 46vw;
+  margin-top: 1rem;
+  border: 1px solid black;
+}
+
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+.label-checkbox-container {
+  margin-left: 0.5rem;
+  padding-bottom: 1rem;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.label-checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.label-checkbox-container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.label-checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.label-checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.button-checkbox-container {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-button-checkbox {
+  color: white;
+  background-color: #029403;
+  height: 2rem;
+  width: 7rem;
+  box-shadow: 10px 5px 5px rgb(197, 194, 194);
+  border: 1px solid grey;
+  text-align: center;
+  transition: transform, background, 0.5s ease;
+  transform: scale(1);
+}
+
+.submit-button-checkbox:hover {
+  background: rgb(151, 151, 228);
+  box-shadow: 0 0 6px white;
+  transform: scale(1.05);
+  box-shadow: 10px 5px 5px rgb(197, 194, 194);
+}

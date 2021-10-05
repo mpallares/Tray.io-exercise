@@ -4,6 +4,10 @@
 }
 
 .form-container {
+  padding-left: 10px;
+  height: 60vh;
+  width: 47vw;
+  margin-top: 1rem;
   border: 1px solid black;
 }
 
@@ -30,10 +34,8 @@ input[value] {
 input:focus {
   outline-color: #4eb5f1;
 }
-
-
-
 .name-field {
+  margin-left: 15px;
   width: 45vw;
   margin: 0.5rem;
   display: flex;
@@ -64,9 +66,7 @@ input:focus {
   box-shadow: 10px 5px 5px rgb(197, 194, 194);
 }
 .email-error {
-  /* background-color: black; */
   position: absolute;
-  /* padding-bottom: 0; */
   color: red;
   font-size: x-small;
   bottom: -15px;
