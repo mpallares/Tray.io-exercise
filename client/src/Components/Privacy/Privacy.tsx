@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
+import {useHistory} from 'react-router-dom'
 import { ActionType } from '../../redux/actions/actionTypes';
 import './Privacy.css';
 
 export const Privacy: React.FC<{}> = (): JSX.Element => {
+  const history = useHistory()
   const [checked, setChecked] = useState({
     firstCheckbox: false,
     secondCheckbox: false,
@@ -13,6 +15,8 @@ export const Privacy: React.FC<{}> = (): JSX.Element => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: ActionType.CREATE__CHECKBOX, payload: checked });
+    history.push('/done')
+    dispatch({type: ActionType.CREATE__PAGE, payload: 'done'})
   };
 
   return (

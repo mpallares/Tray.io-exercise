@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
-
+import {useHistory} from 'react-router-dom'
+import {useAppDispatch} from '../redux/hooks'
+import {ActionType} from '../redux/actions/actionTypes'
 
 type Callback = {
   onSubmit: () => void;
 };
+export interface IState {
+  page: 'users' | 'privacy' | 'done';
+}
 const useForm = (submit: Callback['onSubmit'], validate: any) => {
+  const history = useHistory()
+  const dispatch = useAppDispatch()
+ 
   const [user, setUsers] = useState({
     name: '',
     role: '',
@@ -20,24 +28,25 @@ const useForm = (submit: Callback['onSubmit'], validate: any) => {
   });
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-    // const name = event.target.name;
     const { name, value} = event.target;
     setUsers((prev) =>  ({...prev, [name]: value}));
-
-    
-
-    //setUsers({ ...user, name: e.target.value, role: e.target.value, email: e.target.value, password: e.target.value, firstCheckbox:e.target.checked, secondCheckbox: e.target.checked });
   };
 
   const submitHandler = (event: React.FormEvent) => {
+    
     event.preventDefault();
     setErrors(validate(user)); 
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0) submit();
-   
+    if (Object.keys(errors).length === 0) {
+      
+      submit();
+      history.push('/privacy')
+      dispatch({ type: ActionType.CREATE__PAGE, payload: 'privacy' })
+     
+     }
+     
   }, [errors]);
 
   return {
@@ -45,7 +54,7 @@ const useForm = (submit: Callback['onSubmit'], validate: any) => {
     submitHandler,
     user,
     errors,
-    setUsers
+    setUsers,
   };
 };
 

@@ -10,8 +10,6 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const userStore = useAppSelector((state) => state.user);
 
-  console.log('USERSSSS', userStore)
-
   const submit = () => {
     dispatch({ type: ActionType.CREATE__USER, payload: user });
     setUsers({
@@ -21,11 +19,11 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
       password: '',
     });
   };
+
   const { changeHandler, submitHandler, user, errors, setUsers } = useForm(
     submit,
     validate
   );
-  console.log('user from redux', userStore);
 
   return (
     <div className="main-container">

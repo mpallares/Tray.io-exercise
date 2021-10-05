@@ -5,8 +5,8 @@
 
 .form-container {
   padding-left: 10px;
-  height: 60%;
-  width: 47%;
+  height: 55vh;
+  width: 36vw;
   margin-top: 1rem;
   border: 1px solid black;
 }
@@ -34,9 +34,8 @@ input:focus {
   outline-color: #4eb5f1;
 }
 .name-field {
-  margin-left: 15px;
-  width: 45vw;
-  margin: 0.5rem;
+  padding-right: 2rem;
+  width: 35vw;
   display: flex;
   flex-direction: column;
   height: 5rem;

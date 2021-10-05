@@ -18,7 +18,7 @@
   position: relative;
   top: 0;
   text-align: center;
-  width: 16%;
+  width: 12.3%;
   float: left;
   border: 1px solid grey;
   transition: top ease 0.3s;
@@ -46,7 +46,7 @@ button {
   position: relative;
   top: 0;
   text-align: center;
-  width: 15%;
+  width: 12.3%;
   float: left;
   border: 1px solid grey;
 }

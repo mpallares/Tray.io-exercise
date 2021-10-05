@@ -1,28 +1,21 @@
-import React, { SetStateAction, Dispatch } from 'react';
+import { useAppSelector } from '../../redux/hooks';
 import './Navigation.css';
 
-import { IState as Props2 } from '../../App';
-interface IProps {
-  page: Props2['page'];
-  setPage: Dispatch<SetStateAction<IProps['page']>>;
-}
+export const Navigation = () => {
+  const pageStore = useAppSelector((state) => state.page);
 
-export const Navigation: React.FC<IProps> = ({ page, setPage }) => {
-
- 
   return (
-    <div>
-      <nav className="nav-container">
-        <button className={page === 'users'? 'user-change': 'button'} onClick={() => setPage('users')}>
-          Users
-        </button>
-        <button className={page === 'privacy'? 'user-change': 'button'} onClick={() => setPage('privacy')}>
-          Privacy
-        </button>
-        <button className={page === 'done'? 'user-change': 'button'} onClick={() => setPage('done')}>
-          Done
-        </button>
-      </nav>
-    </div>
+    <nav className="nav-container">
+      <button className={pageStore === 'users' ? 'user-change' : 'button'}>
+        Users
+      </button>
+
+      <button className={pageStore === 'privacy' ? 'user-change' : 'button'}>
+        Privacy
+      </button>
+      <button className={pageStore === 'done' ? 'user-change' : 'button'}>
+        Done
+      </button>
+    </nav>
   );
 };
