@@ -6,10 +6,11 @@
 }
 
 .checkbox-form-container {
+  padding-right: 0.5rem;
   padding-top: 1.5rem;
   padding-left: 10px;
   height: 20vh;
-  width: 46vw;
+  width: 35.5vw;
   margin-top: 1rem;
   border: 1px solid black;
 }

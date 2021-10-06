@@ -5,7 +5,7 @@
 
 .form-container {
   padding-left: 10px;
-  height: 55vh;
+  height: 50vh;
   width: 36vw;
   margin-top: 1rem;
   border: 1px solid black;
@@ -44,6 +44,7 @@ input:focus {
 }
 
 .submit-button {
+  margin-top: -10px;
   align-self: right;
   align-self: flex-end;
   color: #ffffff;
