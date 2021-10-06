@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import { ActionType } from '../../redux/actions/actionTypes';
 import './Privacy.css';
 
 export const Privacy: React.FC<{}> = (): JSX.Element => {
-  const history = useHistory()
+  const history = useHistory();
   const [checked, setChecked] = useState({
     firstCheckbox: false,
     secondCheckbox: false,
@@ -15,8 +15,8 @@ export const Privacy: React.FC<{}> = (): JSX.Element => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: ActionType.CREATE__CHECKBOX, payload: checked });
-    history.push('/done')
-    dispatch({type: ActionType.CREATE__PAGE, payload: 'done'})
+    history.push('/done');
+    dispatch({ type: ActionType.CREATE__PAGE, payload: 'done' });
   };
 
   return (
@@ -26,6 +26,7 @@ export const Privacy: React.FC<{}> = (): JSX.Element => {
           <label className="label-checkbox-container">
             Receive updates about Tray.io product by email
             <input
+              name="input-checkbox"
               checked={checked.firstCheckbox}
               type="checkbox"
               onChange={(e) =>
@@ -40,6 +41,7 @@ export const Privacy: React.FC<{}> = (): JSX.Element => {
             Receive communication by email for other products created by the
             Tray.io team
             <input
+              name="input-checkbox"
               checked={checked.secondCheckbox}
               type="checkbox"
               onChange={(e) =>
