@@ -10,6 +10,8 @@ export interface Checkbox {
 }
 
 export interface Errors {
+  name?: string;
+  role?: string;
   email?: String;
   password?: String;
 }

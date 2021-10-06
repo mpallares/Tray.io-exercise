@@ -7,7 +7,7 @@ interface CreateUser {
 }
 
 interface CreateCheckbox {
-  type: ActionType.CREATE__CHECKBOX
+  type: ActionType.CREATE__CHECKBOX,
   payload: Checkbox
 }
 

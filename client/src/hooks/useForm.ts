@@ -33,20 +33,16 @@ const useForm = (submit: Callback['onSubmit'], validate: any) => {
   };
 
   const submitHandler = (event: React.FormEvent) => {
-    
     event.preventDefault();
     setErrors(validate(user)); 
   };
 
   useEffect(() => {
     if (Object.keys(errors).length === 0) {
-      
       submit();
       history.push('/privacy')
       dispatch({ type: ActionType.CREATE__PAGE, payload: 'privacy' })
-     
-     }
-     
+    } 
   }, [errors]);
 
   return {

@@ -5,7 +5,6 @@ import useForm from '../../hooks/useForm';
 import validate from '../../helpers/validate';
 import './UsersForm.css';
 
-
 export const UsersForm: React.FC<{}> = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const userStore = useAppSelector((state) => state.user);
@@ -56,6 +55,7 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
             email:{' '}
           </label>
           <input
+            data-testid="email-element"
             type="text"
             name="email"
             required
@@ -69,14 +69,16 @@ export const UsersForm: React.FC<{}> = (): JSX.Element => {
             password:{' '}
           </label>
           <input
-          className="asterisk"
+            className="asterisk"
             type="password"
             name="password"
             required
             value={user.password}
             onChange={changeHandler}
           />
-          {errors.password && <p className="password-error">{errors.password}</p>}
+          {errors.password && (
+            <p className="password-error">{errors.password}</p>
+          )}
         </div>
         <div className="name-field">
           <button className="submit-button">Submit</button>
